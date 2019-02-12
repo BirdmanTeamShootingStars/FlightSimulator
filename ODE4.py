@@ -3,14 +3,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def ODE4(t0,x0,r,func):
-    k1 = func(t0,x0)*r
-    k2 = func(t0+0.5*dt,x0+0.5*k1)*r
-    k3 = func(t0+0.5*dt,x0+0.5*k2)*r
-    k4 = func(t0+dt,x0+k3)*r
-    k = (k1 + 2*k2 + 2*k3 + k4)/6
-    return k
+def ODE4(t0,x0,dt,func):
+    k1 = func(t0,x0)*dt
+    k2 = func(t0+0.5*dt,x0+0.5*k1)*dt
+    k3 = func(t0+0.5*dt,x0+0.5*k2)*dt
+    k4 = func(t0+dt,x0+k3)*dt
+    return (k1 + 2*k2 + 2*k3 + k4)/6 
 
+                
 def func1(t,x):
     func1 = (x + np.sqrt(x*x + t*t))/t
     return func1
