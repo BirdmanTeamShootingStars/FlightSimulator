@@ -2,6 +2,8 @@ from math import *
 import param
 from D_State import *
 
+
+#state of a plane
 class State():
     def __init__(self,x,vx,y,vy,theta):
         self.x = x
@@ -37,20 +39,20 @@ class State():
         f_ele = 1 #lift of the elevator
         return param.R*f_ele*cos(self.phai)*param.RECIP_I
 
-    def d_x(self,dt):
-        return self.vx*dt
+    def d_x(self):
+        return self.vx
 
-    def d_y(self,dt):
-        return self.vy*dt
+    def d_y(self):
+        return self.vy
 
     def __add__(self,d_state):
         return State(self.x+d_state.vx ,self.vx+d_state.ax, self.y+d_state.vy, self.vy+d_state.ay, self.theta+d_state.omega)
         
     
-    def dt(self,dt,alpha):
-        vx = self.d_x(dt)
+    def dt(self,alpha):
+        vx = self.d_x()
         ax = self.d_vx()
-        vy = self.d_y(dt)
+        vy = self.d_y()
         ay = self.d_vy()
         omega = self.d_theta()
         return D_State(vx,ax,vy,ay,omega)

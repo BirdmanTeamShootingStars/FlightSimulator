@@ -1,3 +1,5 @@
+#differential of State class
+
 class D_State():
     def __init__(self,vx,ax,vy,ay,omega):
         self.vx = vx
