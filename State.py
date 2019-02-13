@@ -42,8 +42,12 @@ class State():
 
     def d_y(self,dt):
         return self.vy*dt
-   
-    def dt(self,dt):
+
+    def __add__(self,d_state):
+        return State(self.x+d_state.vx ,self.vx+d_state.ax, self.y+d_state.vy, self.vy+d_state.ay, self.theta+d_state.omega)
+        
+    
+    def dt(self,dt,alpha):
         vx = self.d_x(dt)
         ax = self.d_vx()
         vy = self.d_y(dt)

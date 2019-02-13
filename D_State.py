@@ -6,4 +6,6 @@ class D_State():
         self.ay = ay
         self.omega = omega
         self.size = 5
-    
+
+    def __mul__(self,dt):
+        return D_State(self.vx*dt, self.ax*dt, self.vy*dt, self.ay*dt, self.omega*dt)
