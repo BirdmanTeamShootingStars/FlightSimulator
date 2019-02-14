@@ -1,4 +1,5 @@
 #optimize with respect to all element of alpha_list
+#we chose Gradient descent as an algorithm
 #
 #i.e.  optimize alpha of every timing
 
@@ -62,11 +63,12 @@ def main():
     for i in range(100):
         grd = grad_obj_func1(alpha_list)
         if (calc_norm2(grd) <= epsilon**2):
-            print("Find best operation! Cost is",obj_func(alpha_list))
+            print("Find best operation!")
             break;
 
         alpha_list += calc_step_size(alpha_list)*grd
 
+    print("Cost is", obj_func(alpha_list))
     state_list = runge_kutta(param.STATE0,dt,t_list,alpha_list)
     plot_state_list(state_list)
     store_trajectory(t_list,state_list,alpha_list,'./data/best_operation_every_alpha.csv')
