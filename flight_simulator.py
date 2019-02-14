@@ -3,15 +3,15 @@ import numpy as np
 import param
 from State import *
 import matplotlib.pyplot as plt
+from file_func import *
 
 #ordinary differential equation
 def func(state, alpha):
     return state.dt(alpha)
 
-
 def runge_kutta(state0, dt, t_list, alpha_list, func):
     state_list = [state0]
-    for i in range(t_list.size):
+    for i in range(len(t_list)-1):
         k1 = func(state_list[i], alpha_list[i])*dt
         k2 = func(state_list[i]+k1*0.5, alpha_list[i])*dt
         k3 = func(state_list[i]+k2*0.5, alpha_list[i])*dt
@@ -41,6 +41,7 @@ if __name__ == '__main__':
     t0 = 0
     end_t = 15
     t_list = np.arange(t0,end_t+dt,dt)
-    alpha_list = np.zeros(t_list.size)
+    alpha_list = np.zeros(len(t_list))
     state_list = runge_kutta(state0,dt,t_list,alpha_list,func)
+    #store_trajectory(t_list,state_list,alpha_list,'./data/let_it_be.csv')
     plot_state_list(state_list)

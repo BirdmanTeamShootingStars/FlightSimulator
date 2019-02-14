@@ -18,5 +18,5 @@ class D_State():
                        self.ay+other_d_state.ay, self.omega+other_d_state.omega)
 
     #a is float
-    def __div__(self,a):
+    def __truediv__(self,a):
         return D_State(self.vx/a, self.ax/a, self.vy/a, self.ay/a, self.omega/a)
