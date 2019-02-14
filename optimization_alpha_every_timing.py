@@ -50,7 +50,6 @@ def cal_step_size(alpha_list):
     #use Armijo condition
     while (obj_func(alpha_list + step_size*grd) > obj_func(alpha_list) + xi*step_size*norm2):
         step_size *= rho
-        break;
         
     return step_size
 
