@@ -5,14 +5,19 @@ from State import *
 import matplotlib.pyplot as plt
 
 #ordinary differential equation
-def func(state,alpha):
+def func(state, alpha):
     return state.dt(alpha)
 
 
-def runge_kutta(state0,dt,t_list,alpha_list,func):
+def runge_kutta(state0, dt, t_list, alpha_list, func):
     state_list = [state0]
     for i in range(t_list.size):
-        state_list.append(state_list[-1] + func(state_list[-1],alpha_list[i])*dt)
+        k1 = func(state_list[i], alpha_list[i])*dt
+        k2 = func(state_list[i]+k1*0.5, alpha_list[i])*dt
+        k3 = func(state_list[i]+k2*0.5, alpha_list[i])*dt
+        k4 = func(state_list[i]+k3, alpha_list[i])*dt
+        k = (k1 + k2*2 + k3*2 + k4)/6
+        state_list.append(state_list[-1] + k)
 
     return state_list
 
