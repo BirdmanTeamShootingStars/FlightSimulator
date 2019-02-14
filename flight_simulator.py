@@ -9,7 +9,7 @@ from file_func import *
 def func(state, alpha):
     return state.dt(alpha)
 
-def runge_kutta(state0, dt, t_list, alpha_list, func):
+def runge_kutta(state0, dt, t_list, alpha_list):
     state_list = [state0]
     for i in range(len(t_list)-1):
         k1 = func(state_list[i], alpha_list[i])*dt
@@ -23,25 +23,26 @@ def runge_kutta(state0, dt, t_list, alpha_list, func):
 
 #show a graph of trajectory
 def plot_state_list(state_list):
-    x = []
-    y = []
-    for state in state_list:
-        x.append(state.x)
-        y.append(state.y)
+    x_list = np.zeros(len(state_list))
+    y_list = np.zeros(len(state_list))
 
-    plt.plot(x,y)
+    for i in range(len(state_list)):
+        x_list[i] = state_list[i].x
+        y_list[i] = state_list[i].y
+
+    plt.plot(x_list,y_list)
     plt.ylabel('height')
     plt.title('trajectory')
     plt.axes().set_aspect('equal','datalim')
     plt.show()
 
 if __name__ == '__main__':
-    state0 = State(1.,5.,1.,1.,1.) #initial state of plane
+    state0 = param.STATE0
     dt = 0.1
     t0 = 0
     end_t = 15
     t_list = np.arange(t0,end_t+dt,dt)
     alpha_list = np.zeros(len(t_list))
-    state_list = runge_kutta(state0,dt,t_list,alpha_list,func)
+    state_list = runge_kutta(state0,dt,t_list,alpha_list)
     #store_trajectory(t_list,state_list,alpha_list,'./data/let_it_be.csv')
     plot_state_list(state_list)
