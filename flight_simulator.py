@@ -30,12 +30,14 @@ def plot_state_list(state_list):
         x_list[i] = state_list[i].x
         y_list[i] = state_list[i].y
 
-    plt.plot(x_list,y_list)
+    fig, axs = plt.subplots()
+    axs.plot(x_list, y_list)
+    axs.set_title('trajectory')
+    plt.xlabel('distance')
     plt.ylabel('height')
-    plt.title('trajectory')
-    plt.axes().set_aspect('equal','datalim')
+    axs.axis('equal')
     plt.show()
-
+    
 if __name__ == '__main__':
     state0 = param.STATE0
     dt = 0.1
