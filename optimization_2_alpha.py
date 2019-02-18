@@ -1,9 +1,9 @@
 #In this program, it is assumed that a pilot change alpha only twice.
-#For the first time, he change alpha from 0 degrees
-#to someting, And for the second time,he changes it from something to 0 degrees.
+#For the first time, he changes alpha from 0 degrees
+#to something, And for the second time,he changes it from something to 0 degrees.
 #
-#optimize with respect to 
-#we chose Gradient descent as an algorithm
+#optimize with respect to t1, t2, and alpha.
+#we chose Gradient descent as an algorithm.
 #
 
 import param

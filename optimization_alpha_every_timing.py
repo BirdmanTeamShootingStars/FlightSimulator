@@ -1,5 +1,5 @@
 #optimize with respect to all element of alpha_list
-#we chose Gradient descent as an algorithm
+#we chose Gradient descent as an algorithm.
 #
 #i.e.  optimize alpha of every timing
 
