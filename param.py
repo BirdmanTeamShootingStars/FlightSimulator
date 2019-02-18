@@ -8,4 +8,4 @@ RECIP_M = 1/M
 I = 319.72998 #moment of inertia
 RECIP_I = 1/I
 GRAVITY = 9.80665 #gravitational acceleration [m/s*s]
-R = 1 #length between a center of gravity and elevator [m]
+R = 5450 #length between a center of gravity and elevator [m]
