@@ -11,4 +11,4 @@
 * pandas
 
 ## Licence
-MIT Copyright (c) Kyoto University Birdman Team Shooting Stars
+MIT Copyright (c) 2019 Kyoto University Birdman Team Shooting Stars
